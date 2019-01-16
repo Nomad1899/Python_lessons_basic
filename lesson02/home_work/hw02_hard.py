@@ -3,6 +3,16 @@
 
 equation = 'y = -12x + 11111140.2121'
 x = 2.5
+#Первый способ
+#x='*'+str(x)
+#y=eval(equation.split("=")[1].replace('x',x))
+#print(y)
+#Второй способ
+eq=equation.split("=")[1]
+k=float(eq[:eq.find('x')])
+b=float(eq[eq.find('+')+1:])
+y=k*x+b
+print(y)
 # вычислите и выведите y
 
 
@@ -17,12 +27,18 @@ x = 2.5
 #  (т.е. 2 символа для дня, 2 - для месяца, 4 - для года)
 
 # Пример корректной даты
-date = '01.11.1985'
+date = '11.11.1985'
 
-# Примеры некорректных дат
-date = '01.22.1001'
-date = '1.12.1001'
-date = '-2.10.3001'
+days_in_month={1:31,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31}
+split_date=date.split(".")
+dd=int(split_date[0])
+mm=int(split_date[1])
+yy=int(split_date[2])
+check_len= len(split_date[0])==2 and len(split_date[1])==2 and len(split_date[2])==4
+if dd<=days_in_month[mm] and mm<=12 and 1<=yy<=9999 and check_len:
+    print("Дата верна")
+else:
+    print("В дате ошибка!")
 
 
 # Задание-3: "Перевёрнутая башня" (Задача олимпиадного уровня)
