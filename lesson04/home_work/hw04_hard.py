@@ -40,7 +40,6 @@ number = """
 84580156166097919133875499200524063689912560717606
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450"""
-#Так как я так и не понял на сколько делать сдвиг делаю оба варианта
 #Сдвиг на 5 цифр
 pattern='\d{5}'
 five_nums=re.findall(pattern,number)
@@ -60,6 +59,20 @@ while n<=(len(number)-5):
         index_max=n
     n+=1
 print('значение максимума',maximum,'сдвиг',index_max)
+# только последовательные числа
+pattern='\d'
+nums=re.findall(pattern,number)
+nums=''.join(nums)
+max=0
+index_max=0
+for i in range(0,len(nums)-4):
+    if int(nums[i+4])-int(nums[i+3])==1 and int(nums[i+3])-int(nums[i+2])==1 and int(nums[i+2])-int(nums[i+1])==1 and int(nums[i+1])-int(nums[i])==1:
+        if int(nums[i])*int(nums[i+1])*int(nums[i+2])*int(nums[i+3])*int(nums[i+4])>max:
+            max = int(nums[i])*int(nums[i+1])*int(nums[i+2])*int(nums[i+3])*int(nums[i+4])
+            index_max=i
+print(f"наибольшее произведение пяти последовательных цифр {max},смещение первого числа {index_max}")
+
+
 
 # Задание-3 (Ферзи):
 # Известно, что на доске 8×8 можно расставить 8 ферзей так, чтобы они не били
