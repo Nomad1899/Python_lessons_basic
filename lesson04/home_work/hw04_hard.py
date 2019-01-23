@@ -40,12 +40,26 @@ number = """
 84580156166097919133875499200524063689912560717606
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450"""
-max=1
-for x in number[0:5]:
-    max*=int(x)
-print(max)
-
-
+#Так как я так и не понял на сколько делать сдвиг делаю оба варианта
+#Сдвиг на 5 цифр
+pattern='\d{5}'
+five_nums=re.findall(pattern,number)
+print(five_nums)
+s=[int(x[0])*int(x[1])*int(x[2])*int(x[3])*int(x[4]) for x in five_nums]
+print('максимальное значение',max(s))
+print('Cдвиг', len(s[:s.index(max(s))]*5))
+#Сдвиг на 1 цифру
+n=0
+maximum=1
+index_max=0
+while n<=(len(number)-5):
+    five_nums = re.findall(pattern, number[n:])
+    k=five_nums
+    if int(k[0][0])*int(k[0][1])*int(k[0][2])*int(k[0][3])*int(k[0][4])>maximum:
+        maximum=int(k[0][0])*int(k[0][1])*int(k[0][2])*int(k[0][3])*int(k[0][4])
+        index_max=n
+    n+=1
+print('значение максимума',maximum,'сдвиг',index_max)
 
 # Задание-3 (Ферзи):
 # Известно, что на доске 8×8 можно расставить 8 ферзей так, чтобы они не били
