@@ -81,3 +81,29 @@ print(f"наибольшее произведение пяти последов�
 # Программа получает на вход восемь пар чисел,
 # каждое число от 1 до 8 — координаты 8 ферзей.
 # Если ферзи не бьют друг друга, выведите слово NO, иначе выведите YES.
+
+#координаты будем получать в виде двумерного списка
+def func(array):
+    x=[]
+    y=[]
+    def x_coor(array):
+        x=[i[0] for i in array]
+        for m in x:
+            if x.count(m)>=2:
+                return True
+
+    def y_coor(array):
+        y=[i[1] for i in array]
+        for n in y:
+            if y.count(n)>=2:
+                return True
+    def xy_coor(array):
+        for i in range(0,len(x)):
+            for n in range (i+1,len(x)):
+                if abs(x[i]-x[n])==abs(y[i]-y[n]):
+                    return True
+    if x_coor(array)or y_coor(array)or xy_coor(array):
+        return 'YES'
+    else:
+        return 'NO'
+print(func([[1,1],[5,2],[8,3],[6,4],[3,5],[7,6],[2,7],[4,8]]))
