@@ -1,3 +1,5 @@
+import os
+from hw05_easy import show_dir
 # Задача-1:
 # Напишите небольшую консольную утилиту,
 # позволяющую работать с папками текущей директории.
@@ -13,3 +15,44 @@
 # Для решения данной задачи используйте алгоритмы из задания easy,
 # оформленные в виде соответствующих функций,
 # и импортированные в данный файл из easy.py
+while True:
+    print('''
+    Меню:
+        1. Перейти в папку
+        2. Просмотреть содержимое текущей папки
+        3. Удалить папку
+        4. Создать папку
+        5. Выход
+    ''')
+    user_ans=int(input("Введите 1/2/3/4/5:"))
+    if user_ans==1:
+        dir=input('Введите путь')
+        if os.F_OK(os.path.join(dir)):
+            os.chdir(os.path.join(dir))
+            print(f'Вы перешли в {dir}')
+        else:
+            prunt(f'{dir} не существует или нет доступа')
+    elif user_ans==2:
+        show_dir()
+    elif user_ans==3:
+        dir = input('Введите путь')
+        if os.F_OK(os.path.join(dir)):
+            os.removedirs(os.path.join(dir))
+            print(f'{dir} была удалена')
+    elif user_ans==4:
+        name=input('Введите название новой папки:')
+        os.makedirs(name)
+    elif user_ans==5:
+        break
+    else:
+        print('Ошибка введите заново')
+
+
+
+
+
+
+
+
+
+
