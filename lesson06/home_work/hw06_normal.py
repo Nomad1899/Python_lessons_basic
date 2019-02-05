@@ -15,3 +15,37 @@
 #  (Ученик --> Класс --> Учителя --> Предметы)
 # 4. Узнать ФИО родителей указанного ученика
 # 5. Получить список всех Учителей, преподающих в указанном классе
+class Shcool:
+    name = ''
+    classrooms = []
+
+    def __init__(self, name="Unnamded"):
+        self.name = name
+        self.classrooms = []
+
+    def __str__(self):
+        return f"Shcool {self.name}"
+
+    def add_classroom(self, *classroooms):
+        for i in classroooms
+            self.classrooms.append(i)
+
+
+class Classroom:
+    number = 0
+    liter = ''
+    students = []
+    teachers = []
+
+    def __init__(self, number, classname: str):
+        self.number, self.liter = classname[0], classname[1]
+        self.students = []
+        self.teachers = []
+
+    def __str__(self):
+        return f"Class {self.number}{self.liter}"
+
+    def __repr__(self):
+        return self.__str__()
+
+    def add_students(self, student):

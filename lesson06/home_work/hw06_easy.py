@@ -53,15 +53,37 @@ class Triangle:
     @property
     def ca(self):
         return Side(self.c, self.a).length
-    def perimeter(self,full=True):
-        p=round(self.ab+self.bc+self.ca,5)
-        return p if full else p/2
-    def area(self):
-        p=self.perimeter(False)
-        s=math.sqrt(p*(p-self.ab)*(p-self.bc)*(p-self.ca))
-        return round(s,5)
-    def height(self):
-        p=self.perimeter(False)
-        h=(2*self.area())/self.ab
-        return round(h,3)
 
+    def perimeter(self, full=True):
+        p = round(self.ab + self.bc + self.ca, 5)
+        return p if full else p / 2
+
+    def area(self):
+        p = self.perimeter(False)
+        s = math.sqrt(p * (p - self.ab) * (p - self.bc) * (p - self.ca))
+        return round(s, 5)
+
+    def height(self):
+        p = self.perimeter(False)
+        h = (2 * self.area()) / self.ab
+        return round(h, 3)
+class Trapeze:
+    def __init__(self,a:Point, b: Point, c:Point, d:Point):
+        self.a,self.b,self.c,self.d=a,b,c,d
+
+    def __str__(self):
+        return f"Trapeze {self.a}, {self.b},{self.c},{self.d}"
+    @property
+    def ab(self):
+        return Side(self.a,self.b).length
+    @property
+    def bc(self):
+        return Side(self.b,self.c).length
+    @property
+    def cd(self):
+        return Side(self.b,self.c).length
+    @property
+    def da(self):
+        return Side(self.d,self.a).length
+    def perimeter(self):
+        p=round(self.ab+self.bc+self.cd+self.da,5)
