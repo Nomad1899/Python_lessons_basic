@@ -23,6 +23,10 @@ class Worker:
     hours_normal = 0
     hours_completed = 0
 
+    # @property
+    # def salary(self):
+    #     return self.salary
+
 
     @property
     def first_name(self):
@@ -38,7 +42,7 @@ class Worker:
         worker_data = data_line.split()
         self.__first_name = worker_data[0]
         self.__last_name = worker_data[1]
-        self.salary = worker_data[2]
+        self.salary = int(worker_data[2])
         self.job_title = worker_data[3]
         self.hours_normal = worker_data[4]
 
@@ -69,7 +73,7 @@ with open('data/hours_of',encoding="UTF-8") as f:
 
 
 for p in workers:
-    print(completed)
+    print(p.salary)
 
 
 
